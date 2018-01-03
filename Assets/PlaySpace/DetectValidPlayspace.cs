@@ -61,12 +61,12 @@ namespace UnityARInterface
 		private GameObject addGrid(int x, int z)
 		{
 
-			GameObject grid = Instantiate (gridPrefab, GetRoot());
+			//GameObject grid = Instantiate (gridPrefab, GetRoot());
+			GameObject grid = Instantiate (gridPrefab);
 
 			PSGrid psGrid = grid.GetComponent<PSGrid> ();
 
 			psGrid.generateGrid ();
-			//grid.transform.SetParent (transform);
 			grids [x,z] = grid;
 			return grid;
 
@@ -90,7 +90,7 @@ namespace UnityARInterface
 
 		private GameObject findCurrentGrid() {
 
-			Vector3 camPos = Camera.main.transform.localPosition;
+			Vector3 camPos = Camera.main.transform.position;
 			Vector3 gridPos0 = currentGrid.transform.localPosition;
 			Vector3 gridPos1 = new Vector3 (gridPos0.x + gridWidth, gridPos0.y, gridPos0.z + gridLength);
 
@@ -149,26 +149,18 @@ namespace UnityARInterface
 				if (!agentSpawned) {
 					int X = maxGridsColumn / 2;
 					int Z = maxGridsRow / 2;
-					if (grids[X,Z].GetComponent<PSGrid> ().cells [0][0].valid) {
 						
-						Vector3 pos = grids [X, Z].GetComponent<PSGrid> ().cells [0] [0].cellGO.transform.localPosition;
-						NavMeshHit closestHit;
-						if (NavMesh.SamplePosition(pos, out closestHit, 500f, NavMesh.AllAreas)) {
-							Debug.Log ("Could");
-							GameObject agent = Instantiate (agentPrefab);
-							agent.AddComponent<NavMeshAgent> ();
-							agent.transform.position = closestHit.position;
-							agentSpawned = true;
+					Vector3 pos = grids [X, Z].GetComponent<PSGrid> ().cells [5] [5].cellGO.transform.position;
+					NavMeshHit closestHit;
+					if (NavMesh.FindClosestEdge (pos, out closestHit, NavMesh.AllAreas)) {
+						GameObject agent = Instantiate (agentPrefab);
+						agent.transform.position = closestHit.position;
+						agentSpawned = true;
 
-						} else {
-							Debug.Log ("Couldn't");
-						}
-							
 					}
-				}
 
+				}	
 			}
-				
 
 		}
 			

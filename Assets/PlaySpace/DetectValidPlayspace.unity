@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arController: {fileID: 1598742223}
   gridPrefab: {fileID: 1774573576443526, guid: 749098e3adaf24f3485020109e902a4d, type: 2}
-  agentPrefab: {fileID: 1357970054045314, guid: 13a2b5ad3d4a84c2c99b109637e1fe66,
+  agentPrefab: {fileID: 1831430829031396, guid: 36fa14b5783c44f14a1a8771ae857607,
     type: 2}
 --- !u!114 &1598742223
 MonoBehaviour:
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_PlaneDetection: 1
   m_LightEstimation: 1
   m_PointCloud: 1
-  m_Scale: 0.01
+  m_Scale: 1
   pointOfInterest: {x: 0, y: 0, z: 0}
 --- !u!114 &1598742224
 MonoBehaviour:

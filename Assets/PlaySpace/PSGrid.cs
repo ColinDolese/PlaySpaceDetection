@@ -10,7 +10,7 @@ public class PSGrid : MonoBehaviour {
 	public int columns = 10;
 	public float yAnchor = 0;
 	public const float MAX_ERROR = 0.25f;
-	public const float REQUIRED_VERIFIES = 1;
+	public const float REQUIRED_VERIFIES = 3;
 	public const float ALLOWED_ERRORS = 1;
 
 
@@ -166,4 +166,7 @@ public class PSGrid : MonoBehaviour {
 //
 //		}
 	}
+
+
+
 }
